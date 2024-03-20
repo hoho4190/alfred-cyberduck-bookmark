@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.hoho.alfred.cyberduckbookmark</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>C1D1EBCC-4ACC-43C2-A7B1-8A32C44CBE50</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E28FBEEC-E54F-48C6-ABD4-BCE1AD3644CE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>hoho4190</string>
+	<key>description</key>
+	<string>Search and open the bookmarks of Cyberduck.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Cyberduck Bookmark</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>{var:search_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for bookmarks...</string>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>search.sh</string>
+				<key>subtext</key>
+				<string>Search and open Cyberduck’s bookmarks</string>
+				<key>title</key>
+				<string>Cyberduck Bookmark</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>C1D1EBCC-4ACC-43C2-A7B1-8A32C44CBE50</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string></string>
+				<key>sourcefile</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>E28FBEEC-E54F-48C6-ABD4-BCE1AD3644CE</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># Cyberduck Bookmark
+
+An Alfred workflow to search and open the bookmarks of Cyberduck.
+
+![Sample1](assets/about/sample-15.tiff)
+![Sample2](assets/about/sample-56.tiff)
+
+## Usage
+
+- Download and install the [latest workflow release](https://github.com/hoho4190/alfred-cyberduck-bookmark/releases/latest).
+- Search for bookmarks using the keyword `duck`.
+- Select the bookmark you want and it will open.
+
+&gt; https://github.com/hoho4190/alfred-cyberduck-bookmark</string>
+	<key>uidata</key>
+	<dict>
+		<key>C1D1EBCC-4ACC-43C2-A7B1-8A32C44CBE50</key>
+		<dict>
+			<key>xpos</key>
+			<real>170</real>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
+		<key>E28FBEEC-E54F-48C6-ABD4-BCE1AD3644CE</key>
+		<dict>
+			<key>xpos</key>
+			<real>350</real>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>duck</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Bookmark search keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>search_keyword</string>
+		</dict>
+	</array>
+	<key>variables</key>
+	<dict>
+		<key>APP_SUPPORT_PATH</key>
+		<string>~/Library/Group Containers/G69SCX94XU.duck/Library/Application Support/duck/</string>
+	</dict>
+	<key>version</key>
+	<string>{{VERSION}}</string>
+	<key>webaddress</key>
+	<string>https://github.com/hoho4190/alfred-cyberduck-bookmark</string>
+</dict>
+</plist>

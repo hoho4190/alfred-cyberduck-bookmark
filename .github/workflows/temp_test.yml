@@ -1,0 +1,29 @@
+name: temp Test
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+      - uses: actions/checkout@v4
+
+      # - run: |
+      #     echo "$GITHUB_EVENT_NAME == ${{ github.event_name }}"
+      #     echo $GITHUB_REF
+      #     echo $GITHUB_REF_NAME
+      #     echo $GITHUB_REPOSITORY
+      #     echo $GITHUB_REPOSITORY_OWNER
+      #     echo %GITHUB_SHA
+
+      # - env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     gh release list --json tagName -q '.[].tagName'
