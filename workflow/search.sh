@@ -1,12 +1,16 @@
 #!/bin/bash
 
-# see https://docs.cyberduck.io/cyberduck/faq/#preferences-and-application-support-files-location
-BOOKMARK_PATH="${APP_SUPPORT_PATH/#~/$HOME}Bookmarks"
-QUERY=$(tr '[A-Z]' '[a-z]' <<<"$1")
+readonly QUERY=$(tr '[A-Z]' '[a-z]' <<<"$1")
+readonly ITEM_TEMPLATE='{"title": "!@#title", "subtitle": "!@#subtitle", "icon": {"path": "assets/images/bookmark.png"}, "arg": "!@#arg"},'
 
-ITEM_TEMPLATE='{"title": "!@#title", "subtitle": "!@#subtitle", "icon": {"path": "assets/images/bookmark.png"}, "arg": "!@#arg"},'
+get_bookmark_path() {
+    local path="${1/#~/$HOME}"
+    [[ "${path: -1}" != "/" ]] && path+="/"
+    path=$(sed 's/\\ / /g' <<<"$path")
+    echo "${path}Bookmarks"
+}
 
-getItem() {
+get_item() {
     local path=$1
     while IFS= read -r line; do
         key=$(sed -n "s|^[[:blank:]]<key>\(.*\)</key>|\1|p" <<<"$line")
@@ -44,11 +48,17 @@ getItem() {
     fi
 }
 
+###########################
+## MAIN
+
+# see https://docs.cyberduck.io/cyberduck/faq/#preferences-and-application-support-files-location
+readonly BOOKMARK_PATH=$(get_bookmark_path "$APP_SUPPORT_PATH")
+
 declare -a bookmark_paths=("$BOOKMARK_PATH"/*)
 declare -a bookmarks=()
 
 while read -r bookmark_path; do
-    item=$(getItem "$bookmark_path")
+    item=$(get_item "$bookmark_path")
     if [[ -n "$item" ]]; then
         bookmarks+=($item)
     fi

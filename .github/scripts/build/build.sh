@@ -1,12 +1,10 @@
 #!/bin/bash
 
-OUTPUT_PATH="outputs"
-WORKFLOW_PATH="workflow"
-PLIST_FILE="$WORKFLOW_PATH/info.plist"
+readonly OUTPUT_PATH="outputs"
+readonly WORKFLOW_PATH="workflow"
+readonly PLIST_FILE="$WORKFLOW_PATH/info.plist"
 
-[[ -z $RELEASE_VERSION ]] && version="dev" || version=$RELEASE_VERSION
-
-getValue() {
+get_value() {
     local key=$1
     local is_key=false
     local value=
@@ -22,7 +20,7 @@ getValue() {
     echo $value
 }
 
-updateVersion() {
+update_version() {
     if [[ "$OSTYPE" =~ ^darwin ]]; then
         sed -i "" "s/{{VERSION}}/$version/" $PLIST_FILE
     else
@@ -30,22 +28,27 @@ updateVersion() {
     fi
 }
 
-createAlfredworkflow() {
+create_alfredworkflow() {
     rm -rf "$OUTPUT_PATH"
     mkdir -p "$OUTPUT_PATH"
 
     cd "$WORKFLOW_PATH" && zip -rq "../$1" .
 }
 
+###########################
+## MAIN
+
+[[ -z $RELEASE_VERSION ]] && version="dev" || version=$RELEASE_VERSION
+
 # update to release version
-updateVersion
+update_version
 if [[ $? -ne 0 ]]; then
     echo "Failed to update version."
     exit 1
 fi
 
 # create .alfredworkflow file
-name=$(getValue "name" | tr ' ' '-' | tr '[A-Z]' '[a-z]')-
+name=$(get_value "name" | tr ' ' '-' | tr '[A-Z]' '[a-z]')-
 if [[ $version == "dev" ]]; then
     name+="$version"
 else
@@ -53,7 +56,7 @@ else
 fi
 file_name="$OUTPUT_PATH/$name.alfredworkflow"
 
-createAlfredworkflow $file_name
+create_alfredworkflow $file_name
 if [[ $? -ne 0 ]]; then
     echo "Failed to create .alfredworkflow"
     exit 1
