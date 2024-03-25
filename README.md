@@ -20,14 +20,6 @@ An Alfred workflow to search and open the bookmarks of Cyberduck.
 <details>
 <summary>Dev & Test Environment</summary>
 
-##### macOS
-
-```bash
-ProductName:		macOS
-ProductVersion:		14.3.1
-BuildVersion:		23D60
-```
-
 ##### bash
 
 ```bash
@@ -39,6 +31,12 @@ GNU bash, version 3.2.57(1)-release (arm64-apple-darwin23)
 ```bash
 Alfred 5.5
 Build 2257
+```
+
+##### Cyberduck
+
+```bash
+8.8.1(41263)
 ```
 
 </details>
