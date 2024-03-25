@@ -24,6 +24,7 @@ body:
       label: Version
       description: What version did that bug occur in?
       options:
+        - v1.0.1
         - v1.0.0
     validations:
       required: true
@@ -70,5 +71,5 @@ body:
     validations:
       required: false
 
-# Updated by release/v1.0.0
-# Wed Mar 20 05:20:08 UTC 2024
+# Updated by release/v1.0.1
+# Mon Mar 25 01:34:56 UTC 2024
